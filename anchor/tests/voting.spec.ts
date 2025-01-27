@@ -8,22 +8,22 @@ import { log } from "console";
 const IDL = require("../target/idl/voting.json");
 
 const votingAddress = new PublicKey(
-  "coUnmi3oBUtwtd9fjeAvSsJssXh5A5xyPbhpewyzRVF"
+  "5f62rqZCyGsq3imcVruX5RRiQht8Fsip3PuiFVpJ3N3b"
 );
 describe("Voting", () => {
   let context;
   let provider;
-  let votingProgram: Program<Voting>;
+  anchor.setProvider(anchor.AnchorProvider.env());
+  let votingProgram = anchor.workspace.Voting as Program<Voting>;
 
   beforeAll(async () => {
-    context = await startAnchor(
-      "",
-      [{ name: "voting", programId: votingAddress }],
-      []
-    );
-    provider = new BankrunProvider(context);
-
-    votingProgram = new Program<Voting>(IDL, provider);
+    // context = await startAnchor(
+    //   "",
+    //   [{ name: "voting", programId: votingAddress }],
+    //   []
+    // );
+    // provider = new BankrunProvider(context);
+    // votingProgram = new Program<Voting>(IDL, provider);
   });
 
   it("Initialize Poll", async () => {
